@@ -40,23 +40,23 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        echo “0000000”
+        # echo “0000000”
         docker rmi $(docker images -q)
-        echo “1111111”
+        # echo “1111111”
         sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
-        echo “1”
+        # echo “1”
         sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
-        echo “2”
+        # echo “2”
         sudo -E apt-get -y update
-        echo “3”
+        # echo “3”
         sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
-        echo “4”
+        # echo “4”
         sudo -E systemctl daemon-reload
-        echo “5”
+        # echo “5”
         sudo -E apt-get -y autoremove --purge
-        echo “6”
+        # echo “6”
         sudo -E apt-get -y clean
-        echo “7”
+        # echo “7”
         sudo timedatectl set-timezone "$TZ"
 
     - name: Combine Disks(合并磁盘)
